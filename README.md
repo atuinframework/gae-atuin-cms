@@ -35,7 +35,7 @@ git clone git@github.com:atuinframework/gae-atuin-cms.git
 cd gae-atuin-cms
 
 # install dependencies
-docker-compose run tools gulp update
+docker-compose run --rm tools gulp update
 
 docker-compose up
 ```
