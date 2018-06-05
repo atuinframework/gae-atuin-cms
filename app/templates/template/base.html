@@ -1,0 +1,52 @@
+{% extends 'atuincms/pages/base.html' %}
+{%- block atuincms_page_html_class -%}page {{ page.p_template_id }}{%- endblock -%}
+{%- block atuincms_page_title -%}{{ page.name }}{%- endblock -%}
+
+{# CSS #}
+{% block atuincms_css_imports %}
+	<!-- My custom base template CSS imports -->
+{% endblock %}
+{% block atuincms_css %}
+	<link href="/static/min/css/style.css?v={{ SITE_VERSION }}" rel="stylesheet">
+	{% block pages_css %}{% endblock %}
+{% endblock %}
+
+{% block atuin_metadescription -%}{{ page.description }}{%- endblock %}
+
+{% block atuincms_head_end %}
+	<!-- My custom base template head end imports -->
+
+	<!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-47276148-9"></script>-->
+	<!--<script>-->
+	  <!--window.dataLayer = window.dataLayer || [];-->
+	  <!--function gtag(){dataLayer.push(arguments);}-->
+	  <!--gtag('js', new Date());-->
+
+	  <!--gtag('config', '<code>');-->
+	<!--</script>-->
+
+	{% block pages_head_end %}{% endblock %}
+{% endblock %}
+
+
+{% block atuincms_pagecontent -%}
+	<!-- Website navbar -->
+	{% block pagebody %}{% endblock %}
+	<!-- Website footer section -->
+{%- endblock %}
+
+{# JS #}
+{% block atuincms_js_imports %}
+	<!-- My custom base template JS imports -->
+	{% block pages_js_imports %}{% endblock %}
+{% endblock %}
+{% block atuincms_js %}
+	<script src="{{ lurl_for('js_translations.index', v=SITE_VERSION) }}"></script>
+	<script src="/static/min/js/all.js?v={{ SITE_VERSION }}"></script>
+	{% block pages_js %}{% endblock %}
+{% endblock %}
+
+{% block atuincms_foot_end %}
+	<!-- My custom base template footer end imports -->
+	{% block pages_foot_end %}{% endblock %}
+{% endblock %}

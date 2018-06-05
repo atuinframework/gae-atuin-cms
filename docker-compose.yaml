@@ -1,0 +1,28 @@
+version: '2'
+services:
+  devenv:
+    image: atuinframework/gae-atuin-devenv
+    ports:
+     - "8080:8080"   # default module port
+     - "8000:8000"   # admin server port
+    volumes:
+     - ./app:/workspace
+     - data-volume:/data-volume
+     - gcloud-config:/root/.config/gcloud
+    command: >
+      bash -c "cd /workspace &&
+      dev_appserver.py \
+        -A gae-atuin \
+        --host=0.0.0.0 \
+        --admin_host=0.0.0.0 \
+        --storage_path=/data-volume \
+      app.yaml"
+  tools:
+    image: atuinframework/atuin-tools:cms
+    volumes:
+      - ./app:/workspace/app
+      - ./config:/workspace/config
+
+volumes:
+  gcloud-config:
+  data-volume:

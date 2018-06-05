@@ -1,0 +1,11 @@
+# atuin dependencies
+blinker
+pytz>=2016.3
+itsdangerous
+Flask
+Flask-Babel
+Flask-Login
+flask-wtf
+flask-caching
+passlib
+requests

@@ -1,0 +1,48 @@
+
+input {
+  &.inlineTags {
+	width: auto ;
+	height: auto;
+	display:inline-block;
+	font-size: 14px;
+	padding: 4px;
+	margin-left: 5px;
+	margin-bottom: 6px;
+  }
+}
+button{
+  &.btn-circle {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 6px 0;
+	font-size: 11px;
+	line-height: 1.42;
+	border-radius: 15px;
+	background-color: #f5f5f5;
+  }
+}
+
+
+.table-xcondensed > tbody > tr > td,
+.table-xcondensed > tbody > tr > th,
+.table-xcondensed > tfoot > tr > td,
+.table-xcondensed > tfoot > tr > th,
+.table-xcondensed > thead > tr > td,
+.table-xcondensed > thead > tr > th {
+  padding: 0;
+}
+
+
+
+ul {
+  &.typeahead.dropdown-menu {
+	z-index: 9000 !important;
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 50px;
+}

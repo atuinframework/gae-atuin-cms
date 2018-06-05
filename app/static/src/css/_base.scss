@@ -1,0 +1,36 @@
+body, html {
+  width: 100%;
+  min-width: $website-min-width;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #FFFFFFFF;
+  color: $color-text-primary;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.navbar {
+  min-width: $website-min-width;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.helper-vertical-middle {
+  border: none !important;
+  width: 0 !important;
+  display: inline-block !important;
+  height: 100% !important;
+  vertical-align: middle !important;
+}
+
+.vertical-middle {
+  display: inline-block !important;
+  vertical-align: middle !important;
+}

@@ -1,0 +1,34 @@
+{% extends 'atuin/admin/base.html' %}
+{%- block atuin_html_class_admin -%}cms {% block atuincms_html_class_admin -%}{%- endblock -%}{%- endblock -%}
+{%- block atuin_title -%}{% block atuincms_title_admin -%}{%- endblock %} - CMS {{ _('Admin') }}{%- endblock -%}
+
+{# CSS #}
+{% block atuin_admin_css_imports %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css" integrity="sha256-EQjZwW4ljrt9dsonbyX+si6kbxgkVde47Ty9FQehnUg=" crossorigin="anonymous" />
+	{% block atuincms_admin_css_imports %}{% endblock %}
+{% endblock %}
+{% block atuin_admin_css %}
+	<link href="/static/min/css/admin/atuincms.css?v={{ SITE_VERSION }}" rel="stylesheet">
+	{% block atuincms_admin_css %}{% endblock %}
+{% endblock %}
+
+
+{% block atuin_admin_navbar %}
+	{% include 'atuincms/admin/navbar.html' %}
+{% endblock %}
+
+{% block atuin_metadescription -%}{{ SITE_TITLE }} area amministrativa{%- endblock %}
+
+{% block atuin_admin_contentbody %}{% block atuincms_admin_contentbody %}{% endblock %}{% endblock %}
+
+
+{# JS #}
+{% block atuin_admin_js_imports %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/plupload/2.3.3/plupload.full.min.js" integrity="sha256-8Av9Ai6uSCHI69Fc3rmxY+kFvHYOu6BidRqvAPlEhC0=" crossorigin="anonymous"></script>
+	{% block atuincms_admin_js_imports %}{% endblock %}
+{% endblock %}
+{% block atuin_admin_js %}
+	<script src="{{ lurl_for('atuincms.js_translations.index', v=SITE_VERSION) }}"></script>
+	<script src="/static/min/js/admin/atuincms.js?v={{ SITE_VERSION }}"></script>
+	{% block atuincms_admin_js %}{% endblock %}
+{% endblock %}

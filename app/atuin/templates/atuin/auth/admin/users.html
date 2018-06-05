@@ -1,0 +1,57 @@
+{% extends 'atuin/admin/base.html' %}
+{% block atuin_html_class_admin %}users{% endblock%}
+{% block atuin_title_admin %}{{ _('Users') }}{% endblock%}
+
+
+{% block atuin_admin_contentbody -%}
+	<div class="container">
+		<h1 class="page-header">{{ _('Users') }}</h1>
+		<div class="row" style="margin-bottom: 10px">
+			<div class="col-md-6">
+				<button class="btn btn-small btn-default newUserBtn" data-url="{{ lurl_for('atuin.auth.admin.user_save') }}"><i class="icon-plus-sign"> </i> {{ _('New user') }}</button>
+			</div>
+			<div class="col-md-6 text-right">
+				<div class="input-group">
+					<input type="search" id="userListSearch" class="form-control" placeholder="{{ _('Search') }}..." autocomplete="off">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary" id="btnUserListSearch"><i class="fa fa-search"></i></button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<table class="table table-hover">
+			<tbody>
+			{% for user in users %}
+				<tr class="userRow">
+					<td>
+						<a href="{{ lurl_for('atuin.auth.admin.user', user_key_us=user.get_urlsafe()) }}"
+						   data-url="{{ lurl_for('atuin.auth.admin.user_save', user_key_us=user.get_urlsafe()) }}"
+						   class="modUser searchable">{{ user.name }} {{ user.surname }} - {{ user.username }}</a>
+					</td>
+					<td class="userRole {{ ' userActive' if user.active }}">
+						<b>{{ 'Active' if user.active else 'Not active' }}</b><br>
+						{{ user.role_title }}<br>
+						<small>{{ _('Ultimo accesso:') }} {{ user.last_login.strftime('%d/%m/%Y at %H:%M') if user.last_login else _('mai') }}</small>
+					</td>
+					<td class="text-right">
+						{% if user == current_user %}
+							Current user
+						{% else %}
+							<button class="btn btn-danger btn-sm deleteUser" data-url="{{ lurl_for('atuin.auth.admin.user_delete', user_key_us=user.get_urlsafe()) }}"><i class="fa fa-trash"></i></button>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+			<tfoot>
+			<tr>
+				<td colspan="4">
+					<small><span class="usersCount">{{ users|count }}</span> {{ _('users') if users|count != 1 else _('user') }}</small>
+				</td>
+			</tr>
+			</tfoot>
+		</table>
+	</div>
+	{% include 'atuin/auth/admin/modal_user.html' %}
+{%- endblock %}

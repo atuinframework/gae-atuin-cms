@@ -1,0 +1,21 @@
+{% from 'atuincms/languages_utility.html' import list_flags %}
+
+<li class="menu"
+	data-menu-url="{{ url_for('atuincms.menus.admin.menu_get', menu_key_us=m.key.urlsafe()) }}"
+	data-language-url="{{ url_for('atuincms.menus.admin.menu_language_save', menu_key_us=m.key.urlsafe() ) }}"
+	data-key-us="{{ m.key.urlsafe() }}">
+	<button type="button" class="btn btn-xs btn-default btnShiftMenu" autocomplete="off"><i class="fa fa-arrow-up"> </i></button>
+	<button type="button" class="btn btn-xs btn-default btnShiftMenu" autocomplete="off"><i class="fa fa-arrow-down"> </i></button>
+	<button type="button"
+	        class="btn btn-xs btn-default btnEditMenu"
+	        autocomplete="off"
+	        data-url="{{ url_for('atuincms.menus.admin.menu_save', menu_key_us=m.key.urlsafe()) }}">
+		<i class="fa fa-pencil"> </i>
+	</button>
+	<a href="#"
+	   class="getSubmenus"
+	   data-sub-menus="{{ url_for('atuincms.menus.admin.get_submenus', menu_key_us=m.key.urlsafe()) }}">
+		{{ m.name }}
+	</a> {{ list_flags(m.get_languages(), langs) }}
+	<span class="menuOrder">{{ m.order }}</span>
+</li>

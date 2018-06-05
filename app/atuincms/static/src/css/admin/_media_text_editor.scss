@@ -1,0 +1,48 @@
+html.admin.cms.page {
+  #textEditorModal {
+	.modal-dialog {
+	  margin: 5px auto;
+	  width: 99%;
+	  height: 99%;
+	  .modal-content {
+		height: 100%;
+		.modal-body {
+		  height: 100%;
+		  .container-fluid {
+			padding: 0;
+			height: 100%;
+			.topRows {
+			  padding: 15px 0;
+			}
+			.btn-info.pull-right {
+			  margin-right: 15px;
+			}
+
+			.editorTextsRow {
+			  height: 85%;
+			  overflow: scroll;
+			  overflow-x: hidden;
+			  overflow-y: scroll;
+			}
+			textarea {
+			  min-height: 400px;
+			  height: 2000px; // to emulate scroll behaviour of dual page
+			  width: 100%;
+			  margin-bottom: 50px;
+			}
+			#previewBox {
+			  min-height: 450px;
+			  position: relative;
+			  margin-bottom: 50px;
+			  i.fa-spin {
+				position: absolute;
+				top: 47%;
+				left: 47%;
+			  }
+			}
+		  }
+		}
+	  }
+	}
+  }
+}

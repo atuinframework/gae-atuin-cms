@@ -1,0 +1,18 @@
+.flag-icon-en {
+  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/flags/4x3/gb.svg")
+}
+
+.noLang {
+  opacity: 0.4;
+}
+
+.modLang {
+  cursor: pointer;
+  &:hover {
+	opacity: 0.4;
+  }
+}
+
+span {
+  margin-left: 5px;
+}

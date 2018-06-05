@@ -1,0 +1,27 @@
+{% extends 'atuin/base.html' %}
+{%- block atuin_html_class -%}{%- block atuincms_html_class -%}{%- endblock -%}{%- endblock -%}
+{%- block atuin_title -%}{%- block atuincms_title -%}{%- endblock -%}{%- endblock -%}
+
+{# Head #}
+{% block atuin_head_end %}{% block atuincms_head_end %}{% endblock %}{% endblock %}
+
+{# CSS #}
+{% block atuin_css_imports %}{% block atuincms_css_imports %}{% endblock %}{% endblock %}
+{% block atuin_css %}
+	<link href="/static/min/css/atuincms.css?v={{ SITE_VERSION }}" rel="stylesheet">
+	{% block atuincms_css %}{% endblock %}
+{% endblock %}
+
+{# Body #}
+{% block atuin_content %}{% block atuincms_content %}{% endblock %}{% endblock %}
+
+{# JS #}
+{% block atuin_js_imports %}{% block atuincms_js_imports %}{% endblock %}{% endblock %}
+{% block atuin_js %}
+	<script src="{{ lurl_for('atuincms.js_translations.index', v=SITE_VERSION) }}"></script>
+	<script src="/static/min/js/atuincms.js?v={{ SITE_VERSION }}"></script>
+	{% block atuincms_js %}{% endblock %}
+{% endblock %}
+
+{# Foot #}
+{% block atuin_foot_end %}{% block atuincms_foot_end %}{% endblock %}{% endblock %}

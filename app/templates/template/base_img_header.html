@@ -1,0 +1,25 @@
+{% extends 'template/base.html' %}
+{%- block atuincms_page_html_class -%}page {{ page.p_template_id }}{%- endblock -%}
+{%- block atuincms_page_title -%}{{ page.name }}{%- endblock -%}
+
+{% block pagebody %}
+	<div class="headTitle" style="background-image: url({{ page.collection_image_url('gmt_header', 'image') }})">
+		<div class="container">
+			<div class="pageTitle">
+				{{ page.collection_text('gmt_header', 'title') }}
+			</div>
+			<div class="pageBreadcrumb">
+				{% for idx in page.gmt_breadcrumb_r %}
+					{% set inter_link = '' if loop.first else ' / ' %}
+					{% if page.collection_linked_page_exists('gmt_breadcrumb', 'link', idx) %}
+						{{ inter_link }}
+						<a href="{{ page.collection_linked_page_url('gmt_breadcrumb', 'link', idx) }}">
+							{{ page.collection_text('gmt_breadcrumb', 'text', idx) }}
+						</a>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% block pagebody_img_header %}{% endblock %}
+{% endblock %}

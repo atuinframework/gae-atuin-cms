@@ -1,0 +1,111 @@
+<div id="userModal" class="modal fade">
+	<div class="modal-dialog  modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">{{ _('Utente') }}</h4>
+			</div>
+			<div class="modal-body">
+				<form id="userForm" class="form-horizontal" action="" method="post">
+					{{ user_form_admin.hidden_tag() }}
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Active') }} *</label>
+						<div class="col-md-9">
+							{{ user_form_admin.active() }}
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('User role') }} *</label>
+						<div class="col-md-9">
+							{% for (role_id, role) in user_form_admin.role.choices %}
+								<label class="radio-inline">
+									<input type="radio" name="role" value="{{ role_id }}"> {{ role }}
+								</label>
+							{% endfor %}
+						</div>
+					</div>
+
+					<hr>
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Title') }}</label>
+						<div class="col-md-3">
+							{{ user_form_admin.prefix(class='form-control') }}
+						</div>
+						<div class="col-md-6"></div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Name Surname') }} *</label>
+						<div class="col-md-9">
+							<div class="row">
+								<div class="col-md-6">
+									{{ user_form_admin.name(class='form-control', placeholder=_('Name'), **{'data-ft-required':''}) }}
+								</div>
+								<div class="col-md-6">
+									{{ user_form_admin.surname(class='form-control', placeholder=_('Surname'), **{'data-ft-required':''}) }}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Gender') }}</label>
+						<div class="col-md-3">
+							{{ user_form_admin.gender(class='form-control') }}
+						</div>
+						<div class="col-md-6"></div>
+					</div>
+					<hr>
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Email') }} *</label>
+						<div class="col-md-9">
+							<div class="row">
+								<div class="col-md-12">
+									{{ user_form_admin.email(class='form-control', type='email', placeholder='example@mail.it', **{'data-ft-required':''}) }}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Username') }} *</label>
+						<div class="col-md-9">
+							<div class="row">
+								<div class="col-md-12">
+									{{ user_form_admin.username(class='form-control', placeholder='Username', **{'data-ft-required':''}) }}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Password') }}</label>
+						<div class="col-md-9">
+							<div class="row">
+								<div class="col-md-6">
+									{{ user_form_admin.password(class='form-control', placeholder='password') }}
+								</div>
+								<div class="col-md-6">
+									<input type="password" class="form-control" id="passwordConfirm" placeholder="{{ _('type password again') }}">
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label class="col-md-3 control-label">{{ _('Notes') }}</label>
+						<div class="col-md-9">
+							{{ user_form_admin.notes(class='form-control', placeholder='Notes') }}
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Dismiss') }}</button>
+				<button type="button" class="btn btn-primary btnSave">{{ _('Save') }}</button>
+			</div>
+		</div>
+	</div>
+</div>

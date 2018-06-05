@@ -1,0 +1,215 @@
+/* Admin variables */
+.flag-icon-en {
+  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/flags/4x3/gb.svg"); }
+
+.noLang {
+  opacity: 0.4; }
+
+.modLang {
+  cursor: pointer; }
+  .modLang:hover {
+    opacity: 0.4; }
+
+span {
+  margin-left: 5px; }
+
+.acmsAdviceMsg {
+  color: #0000aa !important;
+  background: #FFFFC2 !important; }
+
+html.admin.cms.page .acmsMediaPanel h4 {
+  margin: 0; }
+
+html.admin.cms.page .acmsMediaPanel .panel-title .btn {
+  margin-right: 10px; }
+  html.admin.cms.page .acmsMediaPanel .panel-title .btn:first-of-type {
+    margin-right: 0; }
+
+html.admin.cms.page #textEditorModal .modal-dialog {
+  margin: 5px auto;
+  width: 99%;
+  height: 99%; }
+  html.admin.cms.page #textEditorModal .modal-dialog .modal-content {
+    height: 100%; }
+    html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body {
+      height: 100%; }
+      html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body .container-fluid {
+        padding: 0;
+        height: 100%; }
+        html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body .container-fluid .topRows {
+          padding: 15px 0; }
+        html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body .container-fluid .btn-info.pull-right {
+          margin-right: 15px; }
+        html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body .container-fluid .editorTextsRow {
+          height: 85%;
+          overflow: scroll;
+          overflow-x: hidden;
+          overflow-y: scroll; }
+        html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body .container-fluid textarea {
+          min-height: 400px;
+          height: 2000px;
+          width: 100%;
+          margin-bottom: 50px; }
+        html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body .container-fluid #previewBox {
+          min-height: 450px;
+          position: relative;
+          margin-bottom: 50px; }
+          html.admin.cms.page #textEditorModal .modal-dialog .modal-content .modal-body .container-fluid #previewBox i.fa-spin {
+            position: absolute;
+            top: 47%;
+            left: 47%; }
+
+html.admin.cms.page .acmsImagePanel .panel-title .imageLoading {
+  margin-left: 10px;
+  margin-top: 3px; }
+
+html.admin.cms.page .acmsImagePanel .panel-body img {
+  max-height: 300px; }
+
+html.admin.cms.page #imageUploadModal .modal-body #btnBrowseImages {
+  color: #999;
+  margin: 2em auto;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border: 1px dashed #999;
+  border-radius: 10px;
+  width: 9em;
+  height: 9em;
+  cursor: pointer; }
+  html.admin.cms.page #imageUploadModal .modal-body #btnBrowseImages .fa {
+    margin-top: 10px;
+    font-size: 5em; }
+  html.admin.cms.page #imageUploadModal .modal-body #btnBrowseImages:hover {
+    color: #666;
+    border-color: #666; }
+
+html.admin.cms.page #imageUploadModal .modal-body .progress {
+  margin: 2em 0; }
+
+html.admin.cms.page .acmsLinkedPagePanel .lnkPageNameLink {
+  padding: 10px 15px; }
+
+html.admin.cms.page .acmsLinkedPagePanel .btn-xs {
+  margin-top: 5px; }
+
+html.admin.cms.page .acmsLinkedSectionPanel .lnkSectionNamePath {
+  padding: 10px 15px; }
+
+html.admin.cms.page .acmsLinkedSectionPanel .btn-xs {
+  margin-top: 5px; }
+
+body {
+  min-width: 320px; }
+
+.navbar {
+  min-width: 320px; }
+
+textarea {
+  resize: vertical;
+  min-height: 5em; }
+
+html.admin.cms.menus .menusList {
+  font-size: 1.3em;
+  padding: 30px auto; }
+  html.admin.cms.menus .menusList ul {
+    list-style: circle; }
+  html.admin.cms.menus .menusList li {
+    padding: 10px 0px;
+    border-bottom: 1px solid #E5E5E5; }
+    html.admin.cms.menus .menusList li:last-child {
+      border-bottom: none; }
+    html.admin.cms.menus .menusList li a {
+      padding: 4px;
+      margin-right: 5px; }
+    html.admin.cms.menus .menusList li .menuOrder {
+      font-size: 0.7em;
+      color: #666666; }
+  html.admin.cms.menus .menusList.noItems h3 {
+    margin: 15px; }
+
+html.admin.cms.sections .sectionsList {
+  font-size: 1.3em; }
+  html.admin.cms.sections .sectionsList ul {
+    padding-left: 30px;
+    list-style: none; }
+  html.admin.cms.sections .sectionsList > ul {
+    padding-left: 10px; }
+  html.admin.cms.sections .sectionsList li.section {
+    padding: 7px 0px;
+    border-bottom: 1px solid #E5E5E5; }
+    html.admin.cms.sections .sectionsList li.section > div > div {
+      float: left; }
+    html.admin.cms.sections .sectionsList li.section .container-fluid {
+      padding: 0; }
+    html.admin.cms.sections .sectionsList li.section .noLang {
+      opacity: 0.4; }
+    html.admin.cms.sections .sectionsList li.section .modLang {
+      cursor: pointer; }
+      html.admin.cms.sections .sectionsList li.section .modLang:hover {
+        opacity: 0.4; }
+    html.admin.cms.sections .sectionsList li.section span {
+      margin-left: 5px; }
+    html.admin.cms.sections .sectionsList li.section:last-child {
+      border-bottom: none; }
+    html.admin.cms.sections .sectionsList li.section a {
+      padding: 4px;
+      margin-right: 5px; }
+    html.admin.cms.sections .sectionsList li.section .menuOrder {
+      font-size: 0.7em;
+      color: #666666; }
+    html.admin.cms.sections .sectionsList li.section .sectionInfo {
+      padding: 6px;
+      line-height: 0.9em; }
+      html.admin.cms.sections .sectionsList li.section .sectionInfo .pathTitle {
+        color: #444444;
+        font-size: 0.7em; }
+      html.admin.cms.sections .sectionsList li.section .sectionInfo ul.pages {
+        margin-top: 10px;
+        padding-left: 13px;
+        font-size: 0.75em; }
+  html.admin.cms.sections .sectionsList.noItems h3 {
+    margin: 15px; }
+
+html.admin.cms.sections .rootPagesList {
+  font-size: 1.2em;
+  padding: 10px 0; }
+  html.admin.cms.sections .rootPagesList ul {
+    padding-left: 15px;
+    list-style: none;
+    line-height: 1.8em; }
+
+html.admin.cms.pageNew .btnsTop {
+  margin-top: 20px;
+  margin-bottom: 10px; }
+
+html.admin.cms.pageNew .btnsBottom {
+  font-size: 5em; }
+  html.admin.cms.pageNew .btnsBottom .btn {
+    padding: 10px 16px; }
+
+html.admin.cms.pageNew .tplPreview {
+  margin-top: 20px;
+  border: 1px solid #aaa; }
+
+html.admin.cms.page .pageInfo {
+  margin-top: -20px;
+  padding-top: 5px;
+  background: #c1dbff; }
+  html.admin.cms.page .pageInfo #editPageAdmin .btn {
+    margin: 15px auto; }
+  html.admin.cms.page .pageInfo #pageUrl {
+    font-size: 0.9em;
+    color: #444; }
+
+html.admin.cms.page #adminPageManagement {
+  padding-top: 20px;
+  padding-bottom: 30px; }
+
+input,
+input:active,
+input:focus,
+a:focus {
+  outline: 0;
+  outline-style: none;
+  outline-width: 0; }

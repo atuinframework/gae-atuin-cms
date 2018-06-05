@@ -1,0 +1,1 @@
+# Atuin CMS images directory

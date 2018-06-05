@@ -1,0 +1,29 @@
+html.admin.cms.menus {
+  .menusList {
+	font-size: 1.3em;
+	padding: 30px auto;
+	ul {
+	  list-style: circle;
+	}
+	li {
+	  padding: 10px 0px;
+	  border-bottom: 1px solid #E5E5E5;
+	  &:last-child {
+		border-bottom: none;
+	  }
+	  a {
+		padding: 4px;
+		margin-right: 5px;
+	  }
+	  .menuOrder {
+		font-size: 0.7em;
+		color: #666666;
+	  }
+	}
+	&.noItems {
+	  h3 {
+		margin: 15px;
+	  }
+	}
+  }
+}

@@ -1,0 +1,15 @@
+html.admin.cms.page {
+  .acmsMediaPanel {
+	h4 {
+	  margin: 0;
+	}
+	.panel-title {
+	  .btn {
+		margin-right: 10px;
+		&:first-of-type {
+		  margin-right: 0;
+		}
+	  }
+	}
+  }
+}

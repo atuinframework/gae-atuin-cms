@@ -1,0 +1,35 @@
+<li>
+	<span class="fa fa-folder-open-o" title="{{ _('Section') }}"></span><br>
+	<button type="button"
+	        class="btn btn-xs btn-default btnEditSection"
+	        autocomplete="off"
+	        data-url="{# { url_for('atuincms.sections.admin.section_save', section_key_us=section.key.urlsafe()) }#}"
+	        title="{{ _('Edit') }}">
+		<i class="fa fa-pencil"> </i>
+	</button><br>
+	<button type="button"
+	        class="btn btn-xs btn-default btnDeleteSection"
+	        autocomplete="off"
+	        data-url="{# { url_for('atuincms.sections.admin.section_delete', section_key_us=section.key.urlsafe()) } #}"
+	        title="{{ _('Delete') }}">
+		<i class="fa fa-trash"> </i>
+	</button>
+
+	<a href="#"
+	   class="getSubsections"
+	   data-sub-sections="{# { url_for('atuincms.sections.admin.get_subsections', section_key_us=section.key.urlsafe()) } #}">
+		{{ section.name }}
+	</a>{#{ list_flags(section.get_langs(), langs) }#}
+	<span class="menuOrder">{# { section.order } #}</span><br>
+	<span class="pathTitle">{# { section.path } #}</span><br>
+	<ul class="pages">
+		{% for p_key, names in section['pages_names'].iteritems() %}
+			<li>
+				<span class="fa fa-file-o" title="{{ _('Pagina') }}"></span>
+				<a href="{{ g.lurl_for('atuincms.pages.admin.page_management', page_key_us=p_key) }}">
+					{{ names[g.language] if names.get(g.language) else names.iteritems().next()[1] }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</li>

@@ -1,0 +1,12 @@
+body {
+  min-width: $min-body-width;
+}
+
+.navbar {
+  min-width: $min-body-width;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 5em;
+}

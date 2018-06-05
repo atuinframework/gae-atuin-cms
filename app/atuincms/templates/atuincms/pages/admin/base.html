@@ -1,0 +1,62 @@
+{% extends 'atuincms/admin/base.html' %}
+{%- block atuincms_html_class_admin -%}page {{ page.p_template_id }} {% block atuincms_page_html_class_admin -%}{% endblock %}{% endblock %}
+{% block atuincms_title_admin %}{%- block atuincms_page_title_admin -%}{% endblock %} - {{ _('Page edit') }}{%- endblock %}
+
+{% from 'atuincms/languages_utility.html' import list_flags %}
+
+{% block atuincms_admin_contentbody -%}
+	<div id="page" data-page-admin-url="{{ lurl_for('atuincms.pages.admin.page_management', page_key_us=page.key.urlsafe()) }}">
+		<div class="container-fluid pageInfo">
+			<div class="container">
+				<div id="pageUrl">
+					<div class="pull-left">
+						{{ page.url }}
+					</div>
+					<div class="pull-right">
+						Template: {{ page.tpl_name }}
+					</div>
+				</div>
+				<h1>{{ page.name }}</h1>
+				<p>
+					{{ page.description }}
+				</p>
+				<div class="acmsPageInfo"
+				     data-url="{{ lurl_for('atuincms.pages.admin.page_management', page_key_us=page.key.urlsafe(), target='acms-page-info') }}">
+					{{ list_flags(page.get_languages(), languages.lang_title) }}
+				</div>
+				<br>
+				<br>
+				<form id="editPageAdmin" class="form" method="post" action="{{ lurl_for('atuincms.pages.admin.page_management', page_key_us=page.key.urlsafe(), target='acms-page-edit') }}">
+					{{ acms_edit_page_form.hidden_tag() }}
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<i class="fa fa-spinner fa-pulse fa-fw" id="treeLoadingSpinner" aria-hidden="true"></i> <label for="parentSection">{{ _('Page selection') }} *</label>
+							<select data-tree="{{ url_for('atuincms.sections.admin.tree') }}"
+							        data-ft-required=""
+							        data-value="{{ page.parent_section.urlsafe() if page.parent_section else '/' }}"
+							        id="parentSection"
+							        class="form-control"
+							        name="parent_section"
+							        autocomplete="off">
+							</select>
+						</div>
+						<div class="col-md-6 text-right btns">
+							<a class="btn btn-info" href="{{ page.url }}" target="_blank">{{ _('Show preview') }}</a>
+							<button class="btn btn-primary btnSavePageInfo">{{ _('Save page information') }}</button>
+							<button class="btn btn-danger btnDeletePage" data-url="{{ lurl_for('atuincms.pages.admin.page_management', page_key_us=page.key.urlsafe(), target='acms-page-delete') }}">{{ _('Delete page') }}</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="container" id="adminPageManagement">
+			{% block atuincms_admin_page_contentbody -%}{%- endblock %}
+		</div>
+	</div>
+	{% include 'atuincms/pages/admin/modal_page_info.html'  %}
+
+	{% include 'atuincms/pages/admin/modal_text_editor.html' %}
+	{% include 'atuincms/media/admin/modal_image_upload.html' %}
+	{% include 'atuincms/media/admin/modal_linked_page_picker.html' %}
+	{% include 'atuincms/media/admin/modal_linked_section_picker.html' %}
+{%- endblock %}

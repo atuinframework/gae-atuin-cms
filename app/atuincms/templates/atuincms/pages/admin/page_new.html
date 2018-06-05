@@ -1,0 +1,48 @@
+{% extends 'atuincms/admin/base.html' %}
+{%- block atuincms_html_class_admin -%}pageNew{% endblock %}
+{% block atuincms_title_admin -%}{{ _('Nuova pagina') }}{%- endblock %}
+
+{% block atuincms_admin_contentbody -%}
+	<form id="newPageForm" action="{{ lurl_for('atuincms.pages.admin.save_new') }}" method="post">
+		{{ new_page_admin_form.hidden_tag() }}
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-8">
+					<h2>{{ _('Create new page') }}</h2>
+				</div>
+				<div class="col-xs-4 text-right btns btnsTop">
+					<a class="btn btn-default" href="{{ lurl_for('atuincms.sections.admin.index') }}">{{ _('Dismiss') }}</a>
+					<button class="btn btn-primary btnSaveNewPage" autocomplete="off">{{ _('Create') }}</button>
+				</div>
+			</div>
+			<div class="form-group">
+				{{ new_page_admin_form.name(class='form-control', placeholder=_('Page name') + ' *', **{'data-ft-required': ''}) }}
+			</div>
+			<div class="form-group">
+				{{ new_page_admin_form.description(class='form-control', placeholder=_('Description')) }}
+			</div>
+		</div>
+		<div class="container">
+			<h4 class="font1">{{ _('Template to apply') }}</h4>
+			<select class="form-control" name="template" id="template" data-ft-required="">
+				{% if new_page_admin_form.template.choices|count == 0 %}
+					<option value="">{{ _('No template found') }}</option>
+				{% endif %}
+
+				{% for tpl_id, tpl in new_page_admin_form.template.choices %}
+					<option value="{{ tpl_id }}" data-src="{{ tpl.preview_img_path }}">{{ tpl.name }}</option>
+				{% endfor %}
+			</select>
+			<div class="tplPreview">
+				<img src="" class="img-responsive">
+			</div>
+			{#	preload images  #}
+			<div class="hidden">
+				{% for tpl_id, tpl in new_page_admin_form.template.choices %}
+					<img src="{{ tpl.preview_img_path }}">
+				{% endfor %}
+			</div>
+		</div>
+	</form>
+{%- endblock %}
+

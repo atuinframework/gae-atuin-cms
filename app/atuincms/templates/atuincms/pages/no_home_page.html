@@ -1,0 +1,13 @@
+{% extends 'atuincms/pages/base.html' %}
+
+{% block atuincms_content -%}
+	<div class="container acmsAdviceMsg" style="margin-top: 30px">
+		<h3>{{ _('Automatic content: Home page') }}</h3>
+		<p>
+			{{ _('Requirement to properly work:') }}
+		</p>
+		<ul>
+			<li>{{ _('A page called exactly "Home page" must exist and it must not belong to any section (must be a root page)') }}</li>
+		</ul>
+	</div>
+{%- endblock %}

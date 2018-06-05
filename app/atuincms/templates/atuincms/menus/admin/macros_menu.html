@@ -1,0 +1,9 @@
+{% macro render_menus_tree(menus, langs) -%}
+	{% if menus %}
+	<ul>
+		{% for m in menus %}
+			{% include 'atuincms/menus/admin/list_item.html' %}
+		{% endfor %}
+	</ul>
+	{% endif %}
+{%- endmacro %}

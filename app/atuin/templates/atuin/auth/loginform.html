@@ -1,0 +1,30 @@
+<form class="form-horizontal" action="{{ lurl_for('atuin.auth.login') }}" method="post">
+	{{ loginform.hidden_tag() }}
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h2 class="text-center">{{ _('Login') }}</h2>
+			{% for message in get_flashed_messages() %}
+			<div class="alert alert-danger">
+				<strong>{{ _('Errore') }}!</strong> {{ message }}
+			</div>
+			{% endfor %}
+			{% if next %}
+			<input type="hidden" name="next" value="{{ next }}">
+			{% endif %}
+			<div class="form-group">
+				<label class="col-md-3 control-label" for="email">{{ _('Email') }}</label>
+				<div class="col-md-9">
+					{{ loginform.email(class='form-control', placeholder=_('email')) }}
+					<script>$('#email').focus()</script>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label" for="password">{{ _('Password') }}</label>
+				<div class="col-md-9">
+					{{ loginform.password(class='form-control', placeholder=_('password')) }}
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary btn-block" data-loading="{{ _('caricamento...') }}...">{{ _('Login') }}</button>
+		</div>
+	</div>
+</form>

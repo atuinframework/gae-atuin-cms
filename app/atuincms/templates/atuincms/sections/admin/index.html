@@ -1,0 +1,60 @@
+{% extends 'atuincms/admin/base.html' %}
+{%- block atuincms_html_class_admin -%}sections{% endblock %}
+{% block atuincms_title_admin -%}{{ _('Sections and pages') }}{%- endblock %}
+
+{% from 'atuincms/sections/admin/macros_section.html' import render_sections_tree %}
+
+{% block atuincms_admin_contentbody -%}
+	<div class="container">
+		<h1>{{ _('Sections and pages') }}</h1>
+		<div class="row" style="margin-bottom: 10px">
+			<div class="col-md-12">
+				<button class="btn btn-small btn-default btnNewSection"
+				        data-url="{{ url_for('atuincms.sections.admin.section_save') }}"
+				        data-tree="{{ url_for('atuincms.sections.admin.tree') }}"
+				        autocomplete="off">
+					<i class="fa fa-plus"> </i> {{ _('New section') }}
+				</button>
+				<a class="btn btn-small btn-default btnNewMenu"
+				   href="{{ url_for('atuincms.pages.admin.page_new') }}"
+				   autocomplete="off">
+					<i class="fa fa-plus"> </i> {{ _('New page') }}
+				</a>
+			</div>
+		</div>
+
+		{# Sections #}
+		{% if sections %}
+			<h3 class="font1">{{ _('Sections') }}</h3>
+			<div class="panel panel-default sectionsList" data-section-switch="{{ url_for('atuincms.menus.admin.menu_switch', menu_key_us='CAT_KEY_US', menu_key_us_target='CAT_KEY_US_TARGET') }}">
+				{{ render_sections_tree(sections, languages.lang_title) }}
+			</div>
+		{% else %}
+			<div class="panel panel-default sectionsList noItems">
+				<h3>{{ _('No items') }}</h3>
+				<ul></ul>
+			</div>
+		{% endif %}
+
+		{# Root pages #}
+		{% if root_routes %}
+			<h3 class="font1" title="{{ _('Root pages are those not belonging to any asection') }}">{{ _('Root pages') }}</h3>
+			<div class="panel panel-default rootPagesList">
+				<ul>
+					{% for rr in root_routes %}
+						<li class="rootPage">
+							<span class="fa fa-file-o"></span>
+							<a href="{{ g.lurl_for('atuincms.pages.admin.page_management', page_key_us=rr.page_key.urlsafe()) }}">
+								{{ rr.page_names[g.language]['name'] if rr.page_names.get(g.language) else rr.page_names.iteritems().next()[1]['name'] }}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+
+	</div>
+
+	{% include "atuincms/sections/admin/modal_section.html" -%}
+	{#% include "atuincms/menus/admin/modal_menu_lang.html" -%#}
+{%- endblock %}

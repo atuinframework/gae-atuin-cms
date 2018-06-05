@@ -1,0 +1,38 @@
+{% extends 'atuin/admin/navbar.html' %}
+
+{% block atuin_admin_navbar_title %}<a class="navbar-brand" href="{{ lurl_for('atuincms.home.admin.index') }}">{{ SITE_TITLE }}</a>{% endblock %}
+
+{% block atuin_admin_navbar_main %}
+	<ul class="nav navbar-nav">
+		<li class="{{ 'active' if menuid == 'menus' }}">
+			<a href="{{ lurl_for('atuincms.menus.admin.index') }}">
+				{{ _('Menu') }}
+			</a>
+		</li>
+		<li class="{{ 'active' if menuid == 'sections' }}">
+			<a href="{{ lurl_for('atuincms.sections.admin.index') }}">
+				{{ _('Sections and pages') }}
+			</a>
+		</li>
+		{#	<li class="{{ 'active' if menuid == 'media' }}">#}
+		{#		<a href="#">#}
+		{#			{{ _('Media') }}#}
+		{#		</a>#}
+		{#	</li>#}
+	</ul>
+{% endblock %}
+
+{% block atuin_admin_navbar_admin_items %}
+	<li>
+		<a target="_blank" href="/"><i class="fa fa-external-link"></i> Website's frontend</a>
+	</li>
+{% endblock %}
+
+{% block atuin_admin_navbar_admin_dropdown %}
+	<li>
+		<a title="Login to Google Analytics to look at the visits' statistics of the website" href="http://analytics.google.com/analytics/web/" target="_blank"><i class="fa fa-line-chart"></i> Website traffic statistics - GA</a>
+	</li>
+	<li>
+		<a title="Empty the website cache in order to see your updates." href="{{ url_for('atuincms.home.admin.flush_cache') }}"><i class="fa fa-info-circle"></i> Empty website cache</a>
+	</li>
+{% endblock %}

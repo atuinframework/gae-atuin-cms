@@ -1,0 +1,210 @@
+{#
+	TEXTS
+#}
+{% macro text_panel(page, panel_title, text_id, collapsed=True) -%}
+	<div class="panel panel-default acmsMediaPanel acmsTextPanel" data-url="{{ g.lurl_for('atuincms.pages.admin.page_text', page_key_us=page.key.urlsafe(), text_id=text_id) }}">
+		<div class="panel-heading" role="tab" id="headingTxt_{{ text_id }}">
+			<h4 class="panel-title">
+				<i class="fa fa-file-text-o"> </i>
+				<a role="button" data-toggle="collapse" href="#collapseTxt_{{ text_id }}" aria-expanded="true" aria-controls="collapseTxt_{{ text_id }}">
+					{{ panel_title }}
+				</a>
+				<button class="btn btn-default btn-xs pull-right btnAcmsTextEdit">
+					<i class="fa fa-pencil-square-o"> </i>
+					{{ _('Edit') }}
+				</button>
+				<button class="btn btn-danger btn-xs pull-right btnAcmsTextDelete{{ ' hidden' if not page.text_exists(text_id) }}">
+					<i class="fa fa-trash"> </i>
+					{{ _('Delete') }}
+				</button>
+			</h4>
+		</div>
+		<div id="collapseTxt_{{ text_id }}" class="panel-collapse collapse{{ ' in' if not collapsed == True }}" role="tabpanel" aria-labelledby="headingTxt_{{ text_id }}">
+			<div class="panel-body">
+				<div class="textContent">
+					{{ page.text_html(text_id)|safe }}
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endmacro %}
+
+{% macro text_list_panels(page, panel_title, text_list_id, text_list_range, first_collapsed=True) -%}
+	{% for idx in text_list_range %}
+		{% set item_panel_title %}{{ panel_title }} {{ idx + 1 }}{% endset %}
+		{% set text_id %}{{ text_list_id }}_{{ idx }}{% endset %}
+		{% set collapsed = False if (not first_collapsed == True and idx == 0) else True %}
+		{{ text_panel(page, item_panel_title, text_id, collapsed) }}
+	{% endfor %}
+{%- endmacro %}
+
+{#
+	IMAGES
+#}
+{% macro image_panel(page, panel_title, image_id, collapsed=True) -%}
+	<div class="panel panel-default acmsMediaPanel acmsImagePanel" data-url="{{ g.lurl_for('atuincms.pages.admin.page_image', page_key_us=page.key.urlsafe(), image_id=image_id) }}">
+		<div class="panel-heading" role="tab" id="headingImg{{ image_id }}">
+			<h4 class="panel-title">
+				<i class="fa fa-image"> </i>
+				<a role="button" data-toggle="collapse" href="#collapseImg{{ image_id }}" aria-expanded="true" aria-controls="collapseImg{{ image_id }}">
+					{{ panel_title }}
+				</a>
+
+				<button class="btn btn-default btn-xs pull-right btnAcmsImageUpload"
+				        data-get-upload-url="{{ g.lurl_for('atuincms.media.admin.get_image_upload_url', page_key_us=page.key.urlsafe(), image_id=image_id) }}">
+					<i class="fa fa-upload"> </i>
+					{{ _('Upload') }}
+				</button>
+				{% set img_hidden = '' if page.image_exists(image_id) else ' hidden' %}
+				<button class="btn btn-danger btn-xs pull-right btnAcmsImageDelete{{ img_hidden }}">
+					<i class="fa fa-trash"> </i>
+					{{ _('Delete') }}
+				</button>
+				<a target="_blank" class="btn btn-info btn-xs pull-right btnAcmsImageDownload{{ img_hidden }}" href="{{ page.image_url(image_id) }}" download="{{ panel_title }}-{{ image_id }}">
+					<i class="fa fa-download"> </i>
+					{{ _('Download') }}
+				</a>
+			</h4>
+		</div>
+		<div id="collapseImg{{ image_id }}" class="panel-collapse collapse{{ ' in' if not collapsed == True }}" role="tabpanel" aria-labelledby="headingImg{{ image_id }}">
+			<div class="panel-body">
+				<div>
+					<img class="img-responsive" src="{{ page.image_url(image_id) }}" >
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endmacro %}
+
+{% macro image_list_panels(page, panel_title, image_list_id, image_list_range, first_collapsed=True) -%}
+	{% for idx in image_list_range %}
+		{% set item_panel_title %}{{ panel_title }} {{ idx + 1 }}{% endset %}
+		{% set image_id %}{{ image_list_id }}_{{ idx }}{% endset %}
+		{% set collapsed = False if (not first_collapsed == True and idx == 0) else True %}
+		{{ image_panel(page, item_panel_title, image_id, collapsed) }}
+	{% endfor %}
+{%- endmacro %}
+
+
+{#
+	LINKED PAGES
+#}
+{% macro linked_page_panel(page, panel_title, linked_page_id, collapsed=True) -%}
+	<div class="panel panel-default{{ ' panel-danger' if not page.linked_page_exists(linked_page_id) }} acmsMediaPanel acmsLinkedPagePanel" data-url="{{ g.lurl_for('atuincms.pages.admin.page_linked_page', page_key_us=page.key.urlsafe(), linked_page_id=linked_page_id) }}">
+		<div class="panel-heading" role="tab" id="headingLnkPg_{{ linked_page_id }}">
+			<h4 class="panel-title" style="overflow: hidden">
+				{{ '<i class="fa fa-exclamation-triangle"> </i> '|safe if not page.linked_page_exists(linked_page_id) }}
+				<i class="fa fa-link"> </i>
+				<a role="button" data-toggle="collapse" href="#collapseLnkPg_{{ linked_page_id }}" aria-expanded="true" aria-controls="collapseLnkPg_{{ linked_page_id }}">
+					{{ panel_title }}
+				</a>
+			</h4>
+		</div>
+		<div id="collapseLnkPg_{{ linked_page_id }}" class="panel-collapse collapse{{ ' in' if not collapsed == True }}" role="tabpanel" aria-labelledby="headingLnkPg_{{ linked_page_id }}">
+			<div class="panel-body">
+				{% if page.linked_page_exists(linked_page_id) %}
+					Linked page:
+					<div class="lnkPageNameLink">
+						<h4>{{ page.linked_page_name(linked_page_id) }}</h4>
+						{{ page.linked_page_url(linked_page_id) }}
+					</div>
+				{% else %}
+					<div class="alert alert-danger">
+						<b>{{ _('WARNING') }}!</b><br>
+						{{ _('No linked page') }}<br><br>
+						<b>{{ _('Tip') }}</b> {{ _('linked page') }}:<br>
+						<i>{{ page.linked_page_name(linked_page_id) }}</i>
+					</div>
+				{% endif %}
+				<div>
+					<button class="btn btn-primary btn-xs btnAcmsPickLinkedPage"><i class="fa fa-compress"> </i> {{ _('Link the page') }}</button>
+					{% if page.linked_page_exists(linked_page_id) %}
+						<button class="btn btn-danger btn-xs btnAcmsDeleteLinkedPage"><i class="fa fa-unlink"> </i> {{ _('Unlink') }}</button>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endmacro %}
+
+{#
+	LINKED SECTIONS
+#}
+{% macro linked_section_panel(page, panel_title, linked_section_id, collapsed=True) -%}
+	<div class="panel panel-default{{ ' panel-danger' if not page.linked_section_exists(linked_section_id) }} acmsMediaPanel acmsLinkedSectionPanel" data-url="{{ g.lurl_for('atuincms.pages.admin.linked_section', page_key_us=page.key.urlsafe(), linked_section_id=linked_section_id) }}">
+		<div class="panel-heading" role="tab" id="headingLnkSct_{{ linked_section_id }}">
+			<h4 class="panel-title" style="overflow: hidden">
+				{{ '<i class="fa fa-exclamation-triangle"> </i> '|safe if not page.linked_section_exists(linked_section_id) }}
+				<i class="fa fa-folder-open-o"> </i>
+				<a role="button" data-toggle="collapse" href="#collapseLnkSct_{{ linked_section_id }}" aria-expanded="true" aria-controls="collapseLnkSct_{{ linked_section_id }}">
+					{{ panel_title }}
+				</a>
+			</h4>
+		</div>
+		<div id="collapseLnkSct_{{ linked_section_id }}" class="panel-collapse collapse{{ ' in' if not collapsed == True }}" role="tabpanel" aria-labelledby="headingLnkSct_{{ linked_section_id }}">
+			<div class="panel-body">
+				{% if page.linked_section_exists(linked_section_id) %}
+					{{ _('Linked section') }}:
+					<div class="lnkSectionNamePath">
+						<h4>{{ page.linked_section_name(linked_section_id) }}</h4>
+						{{ page.linked_section_path(linked_section_id) }}
+					</div>
+				{% else %}
+					<div class="alert alert-danger">
+						<b>{{ _('WARNING') }}!</b><br>
+						{{ _('No linked section') }}<br><br>
+						<b>{{ _('TIP') }}</b> {{ _('linked section') }}:<br>
+						<i>{{ page.linked_section_name(linked_section_id) }}</i>
+					</div>
+				{% endif %}
+				<div>
+					<button class="btn btn-primary btn-xs btnAcmsPickLinkedSection"><i class="fa fa-compress"> </i> {{ _('Link a section') }}</button>
+					{% if page.linked_section_exists(linked_section_id) %}
+						<button class="btn btn-danger btn-xs btnAcmsDeleteLinkedSection"><i class="fa fa-unlink"> </i> {{ _('Unlink') }}</button>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endmacro %}
+
+{#
+	MEDIA COLLECTIONS
+#}
+{% macro media_collection_panel(page, panel_title, collection_id, collapsed=True) -%}
+	<div class="panel panel-default acmsMediaPanel acmsCollectionPanel">
+		<div class="panel-heading" role="tab" id="headingColl_{{ collection_id }}">
+			<h4 class="panel-title">
+				<i class="fa fa-file-text-o"> </i> <i class="fa fa-image"> </i>
+				<a role="button" data-toggle="collapse" href="#collapseColl_{{ collection_id }}" aria-expanded="true" aria-controls="collapseColl_{{ collection_id }}">
+					{{ panel_title }}
+				</a>
+			</h4>
+		</div>
+		<div id="collapseColl_{{ collection_id }}" class="panel-collapse collapse{{ ' in' if not collapsed == True }}" role="tabpanel" aria-labelledby="headingColl_{{ collection_id }}">
+			<div class="panel-body">
+				{% for (txt_id, txt) in page.collection_texts(collection_id).iteritems() %}
+					{% set text_id %}{{ collection_id }}_{{ txt_id }}{% endset %}
+					{{ text_panel(page, txt['panel_title'], text_id) }}
+				{% endfor %}
+				{% for (img_id, img) in page.collection_images(collection_id).iteritems() %}
+					{% set image_id %}{{ collection_id }}_{{ img_id }}{% endset %}
+					{{ image_panel(page, img['panel_title'], image_id) }}
+				{% endfor %}
+				{% for (lnk_pg_id, lnk_pg) in page.collection_linked_pages(collection_id).iteritems() %}
+					{% set lnk_pg_id %}{{ collection_id }}_{{ lnk_pg_id }}{% endset %}
+					{{ linked_page_panel(page, lnk_pg['panel_title'], lnk_pg_id) }}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{%- endmacro %}
+
+{% macro media_collection_list_panels(page, panel_title, media_collection_list_id, media_collection_list_range, first_collapsed=True) -%}
+	{% for idx in media_collection_list_range %}
+		{% set item_panel_title %}{{ panel_title }} {{ idx + 1 }}{% endset %}
+		{% set media_collection_id %}{{ media_collection_list_id }}_{{ idx }}{% endset %}
+		{% set collapsed = False if (not first_collapsed == True and idx == 0) else True %}
+		{{ media_collection_panel(page, item_panel_title, media_collection_id, collapsed) }}
+	{% endfor %}
+{%- endmacro %}

@@ -1,0 +1,5 @@
+{% macro list_flags(t_langs, langs) -%}
+	{% for lang, title in langs.iteritems() %}
+		<span class="flag-icon flag-icon-{{ lang }} {{ 'noLang' if not lang in t_langs }} modLang" title="{{ title }}" data-language="{{ lang }}"></span>
+	{% endfor %}
+{%- endmacro %}

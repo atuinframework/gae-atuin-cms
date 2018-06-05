@@ -1,0 +1,13 @@
+{% extends 'atuin/base.html' %}
+
+{% block atuin_title %}Login{% endblock%}
+
+{% block atuin_content %}
+	<div class="container">
+		<div class="row" style="margin-top:20%">
+			<div class="col-sm-6 col-sm-offset-3">
+				{% include 'atuincms/auth/loginform.html' %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

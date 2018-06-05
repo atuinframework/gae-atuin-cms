@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block atuin_title %}{{ _('Unauthorized') }}{% endblock%}
+
+{% block content %}
+
+<div class="container">
+	<h1>{{ _('Unauthorized') }}</h1>
+	{{ _("You're not authorized to access this page.") }}<br>
+	<br>
+	<a href="{{ lurl_for('home.index') }}">{{ _('Back to homepage!') }}</a>
+</div>
+{% endblock %}

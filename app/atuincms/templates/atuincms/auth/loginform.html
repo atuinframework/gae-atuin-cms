@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+	<div class="panel-body text-center">
+		<h4>LOGIN</h4>
+		<h2>{{ SITE_TITLE }}</h2>
+		<hr>
+		{% for message in get_flashed_messages() %}
+			<div class="alert alert-danger">
+				<strong>{{ _('Error') }}!</strong> {{ message }}
+			</div>
+		{% endfor %}
+		<p>Log in with Google</p>
+		<a href="{{ users.create_login_url(lurl_for('atuin.auth.external_login_google', r=lurl_for('atuincms.home.admin.index'), r_error=lurl_for('atuincms.auth.login'))) }}" class="btn btn-primary text-left" style="width: 80%">
+			<i class="fa fa-google" style="margin-right: 8px"> </i>Google
+		</a>
+	</div>
+</div>

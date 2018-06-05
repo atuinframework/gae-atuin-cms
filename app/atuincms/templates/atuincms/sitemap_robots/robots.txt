@@ -1,0 +1,16 @@
+{# Include robots.txt if defined. Overwrite use the atuincms's one. #}
+{%- set robots %}{% include 'app/robots.txt' ignore missing %}{% endset -%}
+
+{% if not robots %}
+
+{%- set robots -%}
+User-agent: *
+Disallow:
+
+Sitemap: {{ url_root }}sitemap.xml
+{% endset -%}
+
+{% endif %}
+
+{# print the outcome #}
+{{- robots -}}

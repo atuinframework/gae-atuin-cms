@@ -1,0 +1,35 @@
+{% extends 'atuincms/pages/admin/base.html' %}
+{%- block atuincms_page_title_admin -%}{{ page.name }}{% endblock %}
+
+{% from 'atuincms/pages/admin/utility_macros.html'
+	import image_panel, media_collection_panel, media_collection_list_panels  %}
+
+{# CSS #}
+{% block atuincms_admin_css_imports %}
+	<!-- My custom base template admin CSS imports -->
+	{% block pages_admin_css_imports %}{% endblock %}
+{% endblock %}
+{% block atuincms_admin_css %}
+	<link href="/static/min/css/admin/style.css?v={{ SITE_VERSION }}" rel="stylesheet">
+	{% block pages_admin_css %}{% endblock %}
+{% endblock %}
+
+{% block atuin_head_end %}
+	<!-- Atuin admin head block -->
+{% endblock %}
+
+{% block atuincms_admin_page_contentbody -%}
+	<!-- My custom template navbar position -->
+	{% block admin_template_pagecontent -%}{%- endblock %}
+{%- endblock %}
+
+
+{# JS #}
+{% block atuincms_admin_js_imports %}
+	<!-- My custom base template admin JS imports -->
+{% endblock %}
+{% block atuincms_admin_js %}
+	<script src="{{ lurl_for('js_translations.index', v=SITE_VERSION) }}"></script>
+	<script src="/static/min/js/admin/all.js?v={{ SITE_VERSION }}"></script>
+	{% block pages_admin_js %}{% endblock %}
+{% endblock %}

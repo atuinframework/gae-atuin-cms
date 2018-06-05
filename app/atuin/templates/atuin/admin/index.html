@@ -1,0 +1,18 @@
+{% extends 'atuin/admin/base.html' %}
+
+
+{% block atuin_admin_contentbody %}
+
+<div class="container">
+	<h1 style="border-bottom: 2px solid #AAAAAA; padding-bottom: 0.2em;">{{ SITE_TITLE }}</h1>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">{{ _('Info') }}</div>
+		
+		<div class="panel-body">
+			{{ lipsum(2) }}
+		</div>
+
+	</div>
+</div>
+{% endblock %}

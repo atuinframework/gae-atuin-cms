@@ -1,0 +1,73 @@
+html.admin.cms.sections {
+  .sectionsList {
+	font-size: 1.3em;
+	ul {
+	  padding-left: 30px;
+	  list-style: none;
+	}
+	& > ul {
+	  padding-left: 10px;
+	}
+	li.section {
+	  padding: 7px 0px;
+	  border-bottom: 1px solid #E5E5E5;
+	  & > div > div {
+		float: left;
+	  }
+	  .container-fluid {
+		padding: 0;
+	  }
+	  .noLang {
+		opacity: 0.4;
+	  }
+
+	  .modLang {
+		cursor: pointer;
+		&:hover {
+		  opacity: 0.4;
+		}
+	  }
+	  span {
+		margin-left: 5px;
+	  }
+	  &:last-child {
+		border-bottom: none;
+	  }
+	  a {
+		padding: 4px;
+		margin-right: 5px;
+	  }
+	  .menuOrder {
+		font-size: 0.7em;
+		color: #666666;
+	  }
+	  .sectionInfo {
+		padding: 6px;
+		line-height: 0.9em;
+		.pathTitle {
+		  color: #444444;
+		  font-size: 0.7em;
+		}
+		ul.pages {
+		  margin-top: 10px;
+		  padding-left: 13px;
+		  font-size: 0.75em;
+		}
+	  }
+	}
+	&.noItems {
+	  h3 {
+		margin: 15px;
+	  }
+	}
+  }
+  .rootPagesList {
+	font-size: 1.2em;
+	padding: 10px 0;
+	ul {
+	  padding-left: 15px;
+	  list-style: none;
+	  line-height: 1.8em;
+	}
+  }
+}

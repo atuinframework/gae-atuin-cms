@@ -1,0 +1,43 @@
+html.admin.cms.page {
+  .acmsImagePanel {
+	.panel-title {
+	  .imageLoading {
+		margin-left: 10px;
+		margin-top: 3px;
+	  }
+	}
+	.panel-body {
+	  img {
+		max-height: 300px;
+	  }
+	}
+  }
+
+  #imageUploadModal {
+	.modal-body {
+	  #btnBrowseImages {
+		color: #999;
+		margin: 2em auto;
+		text-align: center;
+		padding-top: 10px;
+		padding-bottom: 5px;
+		border: 1px dashed #999;
+		border-radius: 10px;
+		width: 9em;
+		height: 9em;
+		cursor: pointer;
+		.fa {
+		  margin-top: 10px;
+		  font-size: 5em;
+		}
+		&:hover {
+		  color: #666;
+		  border-color: #666;
+		}
+	  }
+	  .progress {
+		margin: 2em 0;
+	  }
+	}
+  }
+}

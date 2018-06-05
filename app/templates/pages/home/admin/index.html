@@ -1,0 +1,14 @@
+{% extends 'template/admin/base.html' %}
+
+{% from 'atuincms/pages/admin/utility_macros.html' import
+	text_panel,
+	text_list_panels,
+	image_panel, image_list_panels, linked_page_panel, media_collection_panel, media_collection_list_panels %}
+
+{% block atuincms_admin_page_contentbody %}
+
+	{{ image_panel(page, _('Main picture'), 'main_pic') }}
+
+	{{ text_panel(page, _('Main description'), 'main_description') }}
+
+{% endblock %}

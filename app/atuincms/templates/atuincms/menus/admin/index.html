@@ -1,0 +1,36 @@
+{% extends 'atuincms/admin/base.html' %}
+{%- block atuincms_html_class_admin -%}menus{% endblock %}
+{% block atuincms_title_admin -%}{{ _('Menu') }}{%- endblock %}
+
+{% from 'atuincms/menus/admin/macros_menu.html' import render_menus_tree %}
+
+{% block atuincms_admin_contentbody -%}
+	<div class="container">
+		<h1>{{ _('Menu') }}</h1>
+		<div class="row" style="margin-bottom: 10px">
+			<div class="col-md-12">
+				<button class="btn btn-small btn-default btnNewMenu"
+						data-url="{{ url_for('atuincms.menus.admin.menu_save') }}"
+						data-tree="{{ url_for('atuincms.menus.admin.tree') }}"
+						autocomplete="off">
+					<i class="fa fa-plus"> </i> {{ _('New menu') }}
+				</button>
+			</div>
+		</div>
+		
+		{% if menus %}
+		<div class="panel panel-default menusList" data-menu-switch="{{ url_for('atuincms.menus.admin.menu_switch', menu_key_us='CAT_KEY_US', menu_key_us_target='CAT_KEY_US_TARGET') }}">
+			{{ render_menus_tree(menus, languages.lang_title) }}
+		</div>
+		{% else %}
+		<div class="panel panel-default menusList noItems">
+			<h3>{{ _('No items') }}</h3>
+			<ul></ul>
+		</div>
+		{% endif %}
+	</div>
+	
+	{% include "atuincms/menus/admin/modal_menu.html" -%}
+	{% include "atuincms/menus/admin/modal_menu_lang.html" -%}
+{%- endblock %}
+

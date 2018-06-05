@@ -1,0 +1,168 @@
+{######################## TEXTS ########################}
+
+{# Text #}
+	{# class #}
+	self.text_init(
+		text_id='my_text_id',
+		default_text='Default text'
+	)
+
+	{# admin #}
+	{{ text_panel(page, _('My text'), 'my_text_id', collapsed=False) }}
+
+	{# front #}
+	{{ page.text_html('my_list')|safe }}
+
+
+{# Texts list #}
+	{# class #}
+	self.text_list_init(
+		text_list_id='my_list_id',
+		default_text='A default numbered - {} - text.',
+		lst_range=self.my_list_id_r
+	)
+
+	{# admin #}
+	{{ text_list_panels(page, _('My texts list'), 'my_list_id', page.my_list_id_r, first_collapsed=None) }}
+
+	{# front #}
+	{% for idx in page.my_list_id_r %}
+		{{ page.text_html('my_list', idx)|safe }}
+	{% endfor %}
+
+
+{######################## IMAGES ########################}
+{# Image #}
+	{# class #}
+	self.image_init(
+		'image_id': 'my_image_id',
+		'default_url': 'https://via.placeholder.com/600x150/009C0E/FFF'
+	)
+
+	{# admin #}
+	{{ image_panel(page, _('My image'), 'my_image_id', collapsed=False) }}
+
+	{# front #}
+	{{ page.image_url('my_image_id') }}
+
+
+{# Images list #}
+	{# class #}
+	self.image_list_init(
+		image_list_id='my_list_id',
+		default_url='https://via.placeholder.com/550x300/1ad1ff/003d4d?text=550x300%20-%20slide%20{}',
+		lst_range=self.my_list_id_r
+	)
+
+	{# admin #}
+	{{ image_list_panels(page, _('My images list'), 'my_list_id', page.my_list_id_r, first_collapsed=None) }}
+
+	{# front #}
+	{% for idx in page.my_list_id_r %}
+		{{ page.image_url('my_list_id', idx) }}
+	{% endfor %}
+
+{######################## LINKED PAGES ########################}
+{# Linked page #}
+	{# class #}
+	self.linked_page_init(
+		linked_page_id='my_linked_page_id',
+		page_name_hint='The page should be...'
+	)
+
+	{# admin #}
+	{{ linked_page_panel(page, _('My link page panel title'), 'my_linked_page_id', collapsed=False) }}
+
+	{# front #}
+	{{ page.linked_page_url('my_linked_page_id') }}
+	{{ page.linked_page_key_us('my_linked_page_id') }}
+
+
+{######################## MEDIA COLLECTIONS ########################}
+{# Media collection #}
+	{# class #}
+	texts = OrderedDict()
+	texts['text_id_a'] = {
+		'panel_title': 'My text A',
+		'default_text': 'Default text A'
+	}
+	texts['text_id_b'] = {
+		'panel_title': 'My text B',
+		'default_text': 'Default text B'
+	}
+	images = OrderedDict()
+	images['image_id'] = {
+		'panel_title': 'My image',
+		'default_url': 'https://via.placeholder.com/500x250/ff80ff/000?text=500x250%20-%20foto%20{}'
+	}
+	linked_pages = OrderedDict()
+	linked_pages['linked_page_id'] = {
+		'panel_title': 'My linked page',
+		'page_name_hint': 'My page name hint'
+	}
+	self.media_collection_init('
+		collection_id='my_collection',
+		texts=texts,
+		images=images,
+		linked_pages=linked_pages
+	)
+
+	{# admin #}
+	{{ media_collection_panel(page, _('My media collection'), 'my_collection', collapsed=False) }}
+
+	{# front #}
+	{{ page.collection_text_html('my_collection', 'text_id_a')|safe }}
+	{{ page.collection_text_exists('my_collection', 'text_id_a') }}
+	{{ page.collection_image_url('my_collection', 'image_id') }}
+	{{ page.collection_image_exists('my_collection', 'image_id') }}
+	{{ page.collection_linked_page_url('my_collection', 'linked_page_id') }}
+	{{ page.collection_linked_page_exists('my_collection', 'linked_page_id') }}
+
+
+
+{# Media collections list #}
+	{# class #}
+	texts = OrderedDict()
+	texts['text_id_a'] = {
+		'panel_title': 'My text A - {}',
+		'default_text': 'A default numbered - {} - text A.'
+	}
+	texts['text_id_b'] = {
+		'panel_title': 'My text B - {}',
+		'default_text': 'A default numbered - {} - text B.'
+	}
+	images = OrderedDict()
+	images['image_id'] = {
+		'panel_title': 'My image',
+		'default_url': 'https://via.placeholder.com/500x250/ff80ff/000?text=500x250%20-%20foto%20{}'
+	}
+	linked_pages['linked_page_id'] = {
+		'panel_title': 'My linked page {}',
+		'page_name_hint': 'My page name hint {}'
+	}
+	self.media_collection_list_init(
+		collection_list_id='my_coll_list_id',
+		lst_range=self.my_coll_list_id_r,
+		texts=texts,
+		images=images,
+		linked_pages=linked_pages
+	)
+
+	{# admin #}
+	{{ media_collection_list_panels(page, _('My media collections list'), 'my_coll_list_id', page.my_coll_list_id_r, first_collapsed=None) }}
+
+	{# front #}
+	{% for row in page.my_coll_list_id_r|batch(2) %}
+		<div class="row">
+			{% for idx in row %}
+				<div class="col-md-6">
+					{{ page.collection_text_html('my_coll_list_id', 'text_id', idx)|safe }}
+					{{ page.collection_text_exists('my_coll_list_id', 'text_id', idx)|safe }}
+					{{ page.collection_image_url('my_coll_list_id', 'image_id', idx) }}
+					{{ page.collection_image_exists('my_coll_list_id', 'image_id', idx) }}
+					{{ page.collection_linked_page_url('my_coll_list_id', 'linked_page_id', idx) }}
+					{{ page.collection_linked_page_exists('my_coll_list_id', 'linked_page_id', idx) }}
+				</div>
+			{% endfor %}
+		</div>
+	{% endfor %}

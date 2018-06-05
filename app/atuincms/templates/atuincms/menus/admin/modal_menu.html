@@ -1,0 +1,51 @@
+<div id="menuModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" autocomplete="off">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="menuForm" class="form-horizontal" action="" method="post">
+                    {{ menu_form.hidden_tag() }}
+                    {{ menu_form.lang(type='hidden', value=g.language) }}
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">{{ _('Belongs to') }} *</label>
+                        <div class="col-md-9">
+                           <select id="parent_menu" name="parent_menu" class="form-control">
+                           </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">{{ _('Name')}} * <span title="{{ languages.lang_title[g.language] }}" class="flag-icon flag-icon-{{ g.language }}"></span></label>
+                        <div class="col-md-9">
+                            {{ menu_form.name(class='form-control', **{'data-ft-required':''}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">{{ _('Description')}} <span title="{{ languages.lang_title[g.language] }}" class="flag-icon flag-icon-{{ g.language }}"></span></label>
+                        <div class="col-md-9">
+                            {{ menu_form.description(class='form-control') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">{{ _('Page') }}</label>
+                        <div class="col-md-9" id="linked_page_search" data-url="{{ lurl_for('atuincms.pages.admin.pages') }}">
+                            <select class="form-control"
+                                    id="linked_page"
+                                    name="linked_page"
+                                    placeholder="{{ _('Start typing..') }}"
+                                    data-noresults-text="{{ _('No result') }}"
+                                    autocomplete="off">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" autocomplete="off">{{ _('Dismiss')}}</button>
+                <button type="button" class="btn btn-primary btnSave" autocomplete="off">{{ _('Save')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
