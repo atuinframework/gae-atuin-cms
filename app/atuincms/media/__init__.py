@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-import bleach
-
+import cgi
 
 def sanitize_input_text(txt):
     """
@@ -8,6 +7,8 @@ def sanitize_input_text(txt):
     :param txt: string The user input text.
     :return: string Sanitized text.
     """
-    txt = bleach.clean(txt, tags=['br'])
-    txt = bleach.linkify(txt)
+    txt = cgi.escape(txt)
+
+    # allow only the <br>
+    txt = txt.replace('&lt;br&gt;', '<br>')
     return txt

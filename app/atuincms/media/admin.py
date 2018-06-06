@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import bleach
 from flask.blueprints import Blueprint
 from flask import g, abort, render_template, jsonify, request
 
