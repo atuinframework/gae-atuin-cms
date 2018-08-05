@@ -15,6 +15,7 @@ services:
         -A gae-atuin \
         --host=0.0.0.0 \
         --admin_host=0.0.0.0 \
+        --enable_console \
         --storage_path=/data-volume \
       app.yaml"
   tools:
