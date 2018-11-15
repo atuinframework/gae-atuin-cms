@@ -8,7 +8,7 @@ from atuincms.router import Template
 from atuincms.sections.models import get_section_pages
 from flask import g, request, abort
 from flask_babel import _
-import markdown
+import markdown2
 from google.appengine.ext import ndb, blobstore
 from google.appengine.api import images as gapi_images
 
@@ -513,7 +513,7 @@ class Page(ndb.Model):
             txt = self.text(text_id, l=l)
         else:
             txt = self.p_texts[text_id]
-        return markdown.markdown(txt)
+        return markdown2.markdown(txt)
 
     def text_save(self, text_id, txt, l=None):
         """

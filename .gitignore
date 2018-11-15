@@ -80,5 +80,6 @@ venv.bak/
 # GAE Atuin CMS
 
 app/lib
+app/static/min
 app/config.py
 app/version.py

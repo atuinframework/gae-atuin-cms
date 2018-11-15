@@ -24,12 +24,13 @@ class HomePage(MyCustomBasePage):
         # features
         self.text_init(
             text_id='main_description',
-            default_text='# GAE Atuin CMS\n\nGAE Atuin CMS is a Content Management System to build cloud-based websites ' +
-                         'that rely on top of the [GAE Atuin Web Framework](https://github.com/atuinframework/gae-atuin).' +
-                         'This CMS is designed to be deployed on [Google App Engine](https://cloud.google.com/appengine/) ' +
-                         'and to use the [Google Datastore](https://cloud.google.com/datastore/).\n\n'+
-                         'GAE Atuin CMS dynamically creates RESTful URLs thanks to a powerful routing engine system.\n\n' +
-                         'Finally, its template engine system gives you the freedom to define your own templates to be applied to each page.'
+            default_text='### GAE Atuin CMS\n\nGAE Atuin CMS is a Content Management System to build cloud-based '
+                         'websites that rely on top of the [GAE Atuin Web Framework]('
+                         'https://github.com/atuinframework/gae-atuin). This CMS is designed to be deployed on ['
+                         'Google App Engine](https://cloud.google.com/appengine/) and to use the [Google Datastore]('
+                         'https://cloud.google.com/datastore/).\n\n GAE Atuin CMS dynamically creates RESTful URLs '
+                         'thanks to a powerful routing engine system.\n\n Finally, its template engine system gives '
+                         'you the freedom to define your own templates to be applied to each page.'
         )
 
     def home_images(self):

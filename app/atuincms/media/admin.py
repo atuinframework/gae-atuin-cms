@@ -5,7 +5,7 @@ from flask import g, abort, render_template, jsonify, request
 from google.appengine.ext import ndb, blobstore
 
 from atuin.auth import login_role_required
-from markdown import markdown
+from markdown2 import markdown
 
 from . import sanitize_input_text
 

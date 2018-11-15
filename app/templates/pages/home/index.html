@@ -9,15 +9,7 @@
 					<div class="text-center">
 						<img src="{{ page.image_url('main_pic') }}" style="max-width: 200px">
 					</div>
-					<h3 class="text-center">GAE Atuin CMS</h3>
-					<p>GAE Atuin CMS is a Content Management System to build cloud-based websites that rely on top of
-						the <a href="https://github.com/atuinframework/gae-atuin">GAE Atuin Web Framework</a>.
-						This CMS is designed to be deployed on <a href="https://cloud.google.com/appengine/">Google App Engine</a>
-						and to use the <a href="https://cloud.google.com/datastore/">Google Datastore</a>.
-					</p>
-					<p>GAE Atuin CMS dynamically creates RESTful URLs thanks to a powerful routing engine system.</p>
-					<p>Finally, its templating engine system gives the freedom to define your templates to be applied to each page.</p>
-
+					{{ page.text_html('main_description')|safe }}
 				</div>
 			</div>
 		</div>
